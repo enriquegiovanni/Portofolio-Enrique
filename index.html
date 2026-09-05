@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enrique Giovanni</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0B0F14;
+    --surface: #141B22;
+    --border: #232C35;
+    --text: #EDF1F4;
+    --text-muted: #7C8A96;
+    --accent: #3ED9C4;
+    --accent-dim: #2A9587;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  section { padding: 120px 0; }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(11, 15, 20, 0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 68px;
+  }
+  .nav-mark {
+    font-family: var(--font-mono);
+    font-size: 15px;
+    color: var(--accent);
+  }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+  .nav-links a { transition: color 0.15s ease; }
+  .nav-links a:hover { color: var(--text); }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    min-height: calc(100vh - 68px);
+    padding: 92px 0 78px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.82fr);
+    gap: clamp(40px, 8vw, 110px);
+    align-items: center;
+  }
+  .hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 5.5vw, 58px);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    max-width: 10ch;
+  }
+  .hero p {
+    margin-top: 24px;
+    font-size: 17px;
+    color: var(--text-muted);
+    max-width: 46ch;
+  }
+  .hero-cta {
+    margin-top: 40px;
+    display: flex;
+    gap: 16px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #06110F;
+  }
+  .btn-primary:hover { background: #57e3d1; transform: translateY(-1px); }
+  .btn-secondary {
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+  .btn-secondary:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+  .hero-visual {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 470px;
+  }
+  .hero-visual::before {
+    content: none;
+  }
+  .portrait {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 360px);
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    background-color: #17252c;
+    background-image: url('foto-profil.jpg');
+    background-position: center top;
+    background-size: cover;
+  }
+
+  /* ---------- SECTION HEADS ---------- */
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent);
+  }
+  .section-head h2 {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 600;
+  }
+  .section-head .rule {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    border: 1px solid var(--border);
+    background:
+      radial-gradient(circle at 78% 0%, rgba(62, 217, 196, 0.12), transparent 34%),
+      linear-gradient(125deg, rgba(20, 27, 34, 0.75), var(--bg));
+  }
+  .about-column {
+    padding: 38px 40px;
+  }
+  .about-column + .about-column { border-left: 1px solid var(--border); }
+  .about-block + .about-block {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border);
+  }
+  .about-block h3 {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .about-block p {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text-muted);
+  }
+  .about-block p strong {
+    display: block;
+    color: var(--text);
+    font-weight: 500;
+  }
+  .about-block p span { display: block; }
+  .about-column--skills .about-block {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .about-column--skills .about-block p {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 12px;
+  }
+  .software-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .software-list span {
+    display: grid;
+    place-items: center;
+    min-width: 42px;
+    height: 38px;
+    padding: 0 10px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text);
+  }
+
+  /* ---------- SKILLS ---------- */
+  .skills-section { padding-top: 96px; }
+  .skills-section .section-head {
+    justify-content: center;
+    margin-bottom: 42px;
+  }
+  .skills-section .section-num,
+  .skills-section .rule { display: none; }
+  .skills-section .section-head h2 {
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 500;
+  }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .skill-card {
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 24px;
+    background: linear-gradient(145deg, rgba(20, 27, 34, 0.86), rgba(11, 15, 20, 0.9));
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+  .skill-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-dim);
+    background: linear-gradient(145deg, rgba(27, 47, 51, 0.9), rgba(11, 15, 20, 0.95));
+  }
+  .skill-icon {
+    display: grid;
+    place-items: center;
+    width: 62px;
+    height: 62px;
+    border: 2px solid currentColor;
+    border-radius: 16px;
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.08em;
+  }
+  .skill-card:nth-child(1) .skill-icon { color: #f24e1e; border-radius: 18px 4px 18px 4px; }
+  .skill-card:nth-child(2) .skill-icon { color: #42a5f5; border-radius: 8px; }
+  .skill-card:nth-child(3) .skill-icon { color: #fb9b3a; border-radius: 50%; }
+  .skill-card:nth-child(4) .skill-icon { color: #f0f4f7; transform: rotate(45deg); border-radius: 12px; }
+  .skill-card:nth-child(4) .skill-icon span { transform: rotate(-45deg); }
+  .skill-card h3 {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .projects-section .section-head {
+    justify-content: center;
+    margin-bottom: 42px;
+  }
+  .projects-section .section-num,
+  .projects-section .rule { display: none; }
+  .projects-section .section-head h2 {
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 500;
+  }
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 24px;
+  }
+  .project-card {
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: linear-gradient(145deg, rgba(20, 27, 34, 0.8), rgba(11, 15, 20, 0.92));
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .project-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-dim);
+  }
+  .project-card.is-tilting {
+    transition: transform 0.12s ease, border-color 0.2s ease;
+    transform: perspective(800px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateY(-5px);
+  }
+  .project-image {
+    height: 210px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+    background-color: #17252c;
+    background-image:
+      linear-gradient(135deg, rgba(62, 217, 196, 0.08), rgba(11, 15, 20, 0.3)),
+      repeating-linear-gradient(45deg, transparent 0 16px, rgba(237, 241, 244, 0.04) 16px 17px),
+      var(--project-image, none);
+    background-size: cover;
+    background-position: center;
+  }
+  .project-image::after {
+    content: 'PROJECT PREVIEW';
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    padding: 9px 12px;
+    border: 1px solid rgba(237, 241, 244, 0.22);
+    background: rgba(11, 15, 20, 0.75);
+  }
+  .project-card:has(.project-image[style*="url"]) .project-image::after { display: none; }
+  .project-content { padding: 22px 24px 24px; }
+  .project-title {
+    font-family: var(--font-display);
+    font-size: 21px;
+    font-weight: 600;
+    margin-bottom: 9px;
+  }
+  .project-desc {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+  .project-actions { display: flex; gap: 10px; }
+  .project-action {
+    padding: 8px 11px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .project-action:hover { border-color: var(--accent); color: var(--accent); }
+  .project-action--demo { background: var(--text); color: var(--bg); border-color: var(--text); }
+  .project-action--demo:hover { color: var(--bg); background: var(--accent); border-color: var(--accent); }
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1.1fr repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "intro phone phone"
+      "intro linkedin linkedin"
+      "intro email line";
+    gap: 10px;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background:
+      radial-gradient(circle at 5% 0%, rgba(62, 217, 196, 0.18), transparent 44%),
+      linear-gradient(135deg, #111c24, var(--surface));
+  }
+  .contact-intro {
+    grid-area: intro;
+    min-height: 220px;
+    padding: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .contact-intro h2 {
+    font-family: var(--font-mono);
+    font-size: clamp(32px, 4vw, 50px);
+    line-height: 1.1;
+    color: var(--accent);
+  }
+  .contact-item {
+    min-height: 78px;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 7px;
+    background: rgba(11, 15, 20, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    transition: transform 0.15s ease, border-color 0.15s ease;
+  }
+  .contact-item:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-dim);
+  }
+  .contact-item--phone { grid-area: phone; }
+  .contact-item--linkedin { grid-area: linkedin; }
+  .contact-item--email { grid-area: email; }
+  .contact-item--line { grid-area: line; }
+  .contact-item-label {
+    margin-bottom: 4px;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .contact-item-value {
+    width: fit-content;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .contact-item-value:hover { color: var(--text); }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 0;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  /* ---------- JAVASCRIPT ENHANCEMENTS ---------- */
+  .js-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .js-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .nav-links a.is-active { color: var(--accent); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 780px) {
+    section { padding: 80px 0; }
+    .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 72px; }
+    .hero-visual { min-height: 350px; order: -1; }
+    .portrait { width: min(78vw, 300px); }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-column { padding: 30px 24px; }
+    .about-column + .about-column { border-top: 1px solid var(--border); border-left: 0; }
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    .skill-card { min-height: 155px; }
+    .project-grid { grid-template-columns: 1fr; }
+    .project-image { height: 190px; }
+    .contact-inner {
+      grid-template-columns: 1fr;
+      grid-template-areas: "intro" "phone" "linkedin" "email" "line";
+    }
+    .contact-intro { min-height: auto; padding: 22px; }
+    .nav-links { gap: 20px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="nav-mark">Portofolio</span>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero wrap">
+  <div>
+    <h1>I'M ENRIQUE GIOVANNI BATTISTA DJOU.</h1>
+    <p>An Information Systems graduate from Gunadarma University with a strong interest in Web Development. Passionate about building responsive, user-friendly, and functional web applications, while continuously learning modern technologies and improving my skills in front-end and back-end development.</p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">Lihat proyek</a>
+      <a href="#contact" class="btn btn-secondary">Hubungi saya</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="portrait" role="img" aria-label="Foto profil Gio"></div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="about">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2>About</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-column">
+        <article class="about-block">
+          <h3>Education</h3>
+          <p>
+            <strong>Gunadarma University</strong>
+            <span>Bachelor of Information Systems</span>
+            <span>2022 — 2026</span>
+          </p>
+        </article>
+        <article class="about-block">
+          <h3>Organization</h3>
+          <p>
+            <strong>Assistant of Information Systems Laboratory, Gunadarma University</strong>
+            <span>(2024 — 2025)</span>
+            <strong>Coordinator of Department, KMK Gunadarma University</strong>
+            <span>(2024 — 2025)</span>
+          </p>
+        </article>
+      </div>
+      <div class="about-column about-column--skills">
+        <article class="about-block">
+          <h3>Skills</h3>
+          <p>
+            <span>UI / UX Design</span>
+            <span>Frontend: HTML, CSS, JavaScript, React</span>
+            <span>Backend: PHP, Laravel, MySQL</span>
+            <span>Teamwork &amp; Project Management</span>
+            <span>Critical Thinking &amp; Problem Solving</span>
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="skills-section">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2>Software</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="skills-grid">
+      <article class="skill-card">
+        <div class="skill-icon">F</div>
+        <h3>Figma</h3>
+      </article>
+      <article class="skill-card">
+        <div class="skill-icon">&lt;/&gt;</div>
+        <h3>VS Code</h3>
+      </article>
+      <article class="skill-card">
+        <div class="skill-icon">X</div>
+        <h3>XAMPP</h3>
+      </article>
+      <article class="skill-card">
+        <div class="skill-icon"><span>GH</span></div>
+        <h3>GitHub</h3>
+      </article>
+    </div>
+  </section>
+
+  <section id="projects" class="projects-section">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2>Projects</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="project-grid">
+      <!-- Tambahkan gambar dengan: style="--project-image: url('nama-gambar.jpg');" pada .project-image -->
+      <article class="project-card">
+        <div class="project-image" style="--project-image: url('proyek-1.jpg');"></div>
+        <div class="project-content">
+          <h3 class="project-title">Website Booking Lapangan Badminton</h3>
+          <p class="project-desc">Built using Laravel, PHP, MySQL, HTML, CSS, and JavaScript to create a badminton court booking website with booking and data management features.</p>
+          <div class="project-actions">
+            <a href="https://github.com/enriquegiovanni/booking_ratujaya.git" class="project-action">GitHub</a>
+          </div>
+        </div>
+      </article>
+      <article class="project-card">
+        <div class="project-image" style="--project-image: url('proyek-2.jpg');"></div>
+        <div class="project-content">
+          <h3 class="project-title">Sistem Keputusan Klinis Penyakit DBD Berdasarkan Kode ICD</h3>
+          <p class="project-desc">Developed a clinical decision support system for diagnosing dengue fever based on ICD codes, utilizing Python and Streamlit</p>
+          <div class="project-actions">
+            <a href="https://github.com/enriquegiovanni/PROJECT-SKRIPSI-SPK-ICD.git" class="project-action">GitHub</a>
+          </div>
+        </div>
+      </article>
+      <article class="project-card">
+        <div class="project-image" aria-label="Tempat screenshot proyek ketiga"></div>
+        <div class="project-content">
+          <h3 class="project-title">[Nama Proyek 3]</h3>
+          <p class="project-desc">Tuliskan ringkasan singkat proyek: masalah yang diselesaikan, teknologi yang digunakan, dan hasilnya.</p>
+          <div class="project-actions">
+            <a href="#" class="project-action">GitHub</a>
+            <a href="#" class="project-action project-action--demo">Live Demo</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-inner">
+      <div class="contact-intro">
+        <h2>GET IN<br>TOUCH</h2>
+      </div>
+      <div class="contact-item contact-item--phone">
+        <span class="contact-item-label">Phone</span>
+        <a class="contact-item-value" href="tel:+6281213577281">+6281213577281</a>
+      </div>
+      <div class="contact-item contact-item--linkedin">
+        <span class="contact-item-label">LinkedIn</span>
+        <a class="contact-item-value" href="https://linkedin.com/in/enrique-giovanni-battista-djou" target="_blank" rel="noopener">linkedin.com/in/enrique-giovanni-battista-djou</a>
+      </div>
+      <div class="contact-item contact-item--email">
+        <span class="contact-item-label">Email</span>
+        <a class="contact-item-value" href="mailto:email@kamu.com">djou707@gmail.com</a>
+      </div>
+      <div class="contact-item contact-item--instagram">
+        <span class="contact-item-label">Instagram</span>
+        <span class="contact-item-value">id: enrique.gvn</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 Enrique Giovanni.
+</footer>
+
+<script src="app.js" defer></script>
+</body>
+</html>
