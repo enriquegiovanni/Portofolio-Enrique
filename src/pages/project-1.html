@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Booking Lapangan Badminton — Enrique Giovanni</title>
+  <meta name="description"
+    content="Detail project Website Booking Lapangan Badminton GOR Ratu Jaya oleh Enrique Giovanni Battista Djou.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0B0F14;
+      --surface: #141B22;
+      --border: #232C35;
+      --text: #EDF1F4;
+      --text-muted: #7C8A96;
+      --accent: #3ED9C4;
+      --accent-dim: #2A9587;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(11, 15, 20, 0.88);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 64px;
+    }
+
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text-muted);
+      transition: color 0.15s ease;
+    }
+
+    .nav-back:hover {
+      color: var(--accent);
+    }
+
+    .nav-back svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .nav-mark {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--accent);
+    }
+
+    /* HERO */
+    .project-hero {
+      padding: 72px 0 60px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 58px);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 36px;
+    }
+
+    /* Meta panel — horizontal cards */
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .meta-item {
+      padding: 14px 20px;
+      background: rgba(20, 27, 34, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      min-width: 130px;
+    }
+
+    .meta-item dt {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding-bottom: 8px;
+      margin-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .meta-item dd {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .meta-link {
+      font-size: 13px;
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.15s ease;
+    }
+
+    .meta-link:hover {
+      color: #57e3d1;
+    }
+
+    /* COVER */
+    .cover-wrap {
+      padding: 52px 0 0;
+    }
+
+    .cover-img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      display: block;
+      cursor: pointer;
+    }
+
+    .cover-placeholder {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(62, 217, 196, 0.08), rgba(11, 15, 20, 0.3)), #17252c;
+      display: grid;
+      place-items: center;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+    }
+
+    /* BODY */
+    .project-body {
+      padding: 64px 0;
+    }
+
+    .content-block {
+      margin-bottom: 56px;
+    }
+
+    .content-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .block-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .content-block h2 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    .content-block p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    .content-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .feature-list li::before {
+      content: '→';
+      color: var(--accent);
+      font-family: var(--font-mono);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .tech-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tech-badge {
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text);
+      background: var(--surface);
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .tech-badge:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .gallery img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      display: block;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer;
+    }
+
+    .gallery img:hover {
+      transform: translateY(-4px) scale(1.02);
+      border-color: var(--accent);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+    }
+
+    /* FULLSCREEN LIGHTBOX MODAL */
+    .image-modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(8, 12, 16, 0.92);
+      backdrop-filter: blur(8px);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      cursor: zoom-out;
+    }
+
+    .image-modal.is-open {
+      display: flex;
+    }
+
+    .image-modal img {
+      max-width: 95vw;
+      max-height: 92vh;
+      object-fit: contain;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    }
+
+    .gallery-placeholder {
+      aspect-ratio: 16/10;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(62, 217, 196, 0.06), rgba(11, 15, 20, 0.3)), #141B22;
+      display: grid;
+      place-items: center;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+    }
+
+    /* CTA */
+    .project-cta {
+      padding: 40px;
+      background: linear-gradient(135deg, rgba(20, 27, 34, 0.9), rgba(11, 15, 20, 0.95));
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 64px;
+      margin-bottom: 64px;
+    }
+
+    .project-cta h3 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .project-cta p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 6px;
+      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #06110F;
+    }
+
+    .btn-primary:hover {
+      background: #57e3d1;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .wrap {
+        padding: 0 20px;
+      }
+
+      .project-hero {
+        padding: 48px 0 40px;
+      }
+
+      .project-hero h1 {
+        font-size: clamp(26px, 7vw, 36px);
+      }
+
+      .hero-meta {
+        gap: 8px;
+      }
+
+      .meta-item {
+        min-width: calc(50% - 6px);
+        flex: 1 1 calc(50% - 6px);
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .project-cta {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 28px 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="wrap">
+      <a href="../../index.html" class="nav-back">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M10 12L6 8l4-4" />
+        </svg>
+        Back to Portfolio
+      </a>
+      <span class="nav-mark">Project 01</span>
+    </div>
+  </nav>
+
+  <main class="wrap">
+
+    <section class="project-hero">
+      <h1>Badminton Court Booking Website</h1>
+      <dl class="hero-meta">
+        <div class="meta-item">
+          <dt>Year</dt>
+          <dd>2024</dd>
+        </div>
+        <div class="meta-item">
+          <dt>Type</dt>
+          <dd>Web Application</dd>
+        </div>
+        <div class="meta-item">
+          <dt>Role</dt>
+          <dd>Full-Stack Developer</dd>
+        </div>
+        <div class="meta-item">
+          <dt>Tools</dt>
+          <dd>VS Code, Xampp, Figma</dd>
+        </div>
+      </dl>
+    </section>
+
+    <div class="cover-wrap">
+      <img src="../../public/image/proyek-1.jpg" alt="Screenshot Website Booking GOR Ratu Jaya" class="cover-img">
+    </div>
+
+    <div class="project-body">
+
+      <div class="content-block">
+        <p class="block-label">About Project</p>
+        <h2>Background</h2>
+        <p>GOR Ratu Jaya is a badminton sports facility with multiple courts for public use. Before this system was
+          introduced, court booking was done offline, requiring users to visit the location directly or call management
+          to reserve a slot. This created challenges such as schedule conflicts, manual recording errors, and limited
+          availability information.</p>
+        <p>This project was developed to digitize the badminton court booking process through a Laravel-based web
+          application. Users can check court availability, select play dates and time slots, and complete bookings
+          online without visiting in person. For administrators, the system streamlines reservations, court management,
+          and scheduling.</p>
+      </div>
+
+      <div class="content-block">
+        <p class="block-label">Key Features</p>
+        <ul class="feature-list">
+          <li>Online Court Booking — Online court reservation based on available dates and times.</li>
+          <li>Schedule Availability — Real-time court availability info to help users choose slots.</li>
+          <li>Booking Confirmation — Instant booking confirmation following verification.</li>
+          <li>Admin Dashboard — Comprehensive summary of bookings and court availability.</li>
+          <li>Booking Management — Administrative management of customer reservation records.</li>
+          <li>Court Management — Management of court information, pricing, and status.</li>
+          <li>Operating Hours — Configuration of operational opening and closing hours.</li>
+        </ul>
+      </div>
+
+      <div class="content-block">
+        <p class="block-label">Screenshots</p>
+        <h2>Application Interface</h2>
+        <div class="gallery">
+          <img src="../../public/image/halamanutama.jpg" alt="Home Page">
+          <img src="../../public/image/halamanbooking.jpg" alt="Booking Page">
+          <img src="../../public/image/dashboardadmin.jpg" alt="Admin Dashboard">
+          <img src="../../public/image/lapanganadmin.jpg" alt="Order History">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="project-cta">
+      <div>
+        <h3>View Source Code</h3>
+        <p>Full repository available on GitHub</p>
+      </div>
+      <div class="cta-actions">
+        <a href="https://github.com/enriquegiovanni/booking_ratujaya.git" target="_blank" rel="noopener"
+          class="btn btn-primary">GitHub →</a>
+        <a href="../../index.html#projects" class="btn btn-outline">← All Projects</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>© 2026 Enrique Giovanni.</footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Scroll reveal
+      const revealEls = document.querySelectorAll(
+        '.project-hero, .cover-wrap, .content-block, .feature-list li, .tech-badge, .gallery > *, .project-cta'
+      );
+
+      if (!reduceMotion && 'IntersectionObserver' in window) {
+        const style = document.createElement('style');
+        style.textContent = `
+      .js-reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .js-reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    `;
+        document.head.appendChild(style);
+
+        revealEls.forEach((el, i) => {
+          el.classList.add('js-reveal');
+          el.style.transitionDelay = (i * 40) + 'ms';
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+
+        revealEls.forEach(el => observer.observe(el));
+      }
+
+      // Fullscreen Lightbox Modal for Images
+      const modal = document.createElement('div');
+      modal.className = 'image-modal';
+      modal.innerHTML = '<img src="" alt="Enlarged view">';
+      document.body.appendChild(modal);
+
+      const modalImg = modal.querySelector('img');
+
+      document.querySelectorAll('.gallery img, .cover-img').forEach(img => {
+        img.addEventListener('click', () => {
+          modalImg.src = img.src;
+          modalImg.alt = img.alt;
+          modal.classList.add('is-open');
+        });
+      });
+
+      modal.addEventListener('click', () => {
+        modal.classList.remove('is-open');
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') modal.classList.remove('is-open');
+      });
+    });
+  </script>
+
+</body>
+
+</html>
